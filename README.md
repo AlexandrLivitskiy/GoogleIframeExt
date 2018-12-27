@@ -1,2 +1,2 @@
 # GoogleIframeExt
-Sample Chrome Extention put google.com in the frame
+Sample Chrome Extension put google.com in the frame

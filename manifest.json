@@ -1,6 +1,6 @@
 {
   "name": "GoogleIframeExt",
-  "description": "Sample Chrome Extention put google.com in the frame",
+  "description": "Sample Chrome Extension put google.com in the frame",
   "version": "1.0",
   "permissions": [
     "activeTab",
