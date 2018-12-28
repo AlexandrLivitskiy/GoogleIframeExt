@@ -1,4 +1,5 @@
-var timeout = 7777;
+var TIMEOUT = 777;
+
 document.body.style = "display: none";
 var frame = document.createElement("iframe");
 frame.id = "iFrame";
@@ -8,6 +9,7 @@ frame.height = "100%";
 frame.setAttribute("frameborder", "0");
 frame.src = window.location;
 document.lastChild.appendChild(frame);
+
 function newGoogle() {
     var body = document.body;
     if (body) document.lastChild.removeChild(body);
@@ -18,13 +20,14 @@ function newGoogle() {
         var resultAr = searchResult.getElementsByTagName("h3");
         for (var i = 0; i < resultAr.length; i++) {
             var elem = document.createElement("p");
-            elem.innerText = resultAr[i].innerText + " " + resultAr[i].parentElement.href;
+            elem.innerHTML = "<a href=\"" + resultAr[i].parentElement.href + "\">" + resultAr[i].innerText + "</a>";
             newBody.appendChild(elem);
         }
     }
     document.lastChild.appendChild(newBody);
-    setTimeout(newGoogle, timeout);
+    setTimeout(newGoogle, TIMEOUT);
 };
+
 frame.onload = function () {
-    setTimeout(newGoogle, timeout);
+    setTimeout(newGoogle, TIMEOUT);
 };
