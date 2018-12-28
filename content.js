@@ -1,3 +1,4 @@
+var timeout = 7777;
 document.body.style = "display: none";
 var frame = document.createElement("iframe");
 frame.id = "iFrame";
@@ -5,14 +6,25 @@ frame.style = "top: 0; left: 0; width: 100%; height: 100%; position: absolute; b
 frame.width = "100%";
 frame.height = "100%";
 frame.setAttribute("frameborder", "0");
-frame.src = "https://www.google.com";
+frame.src = window.location;
 document.lastChild.appendChild(frame);
-frame.onload = function() {
+function newGoogle() {
     var body = document.body;
     if (body) document.lastChild.removeChild(body);
     var newBody = document.createElement("body");
-    var elem = document.createElement("p");
-    elem.innerText = "Hi Lev!";
-    newBody.appendChild(elem);
+    var frameDoc = document.getElementById("iFrame").contentWindow.document;
+    var searchResult = frameDoc.getElementById("search");
+    if (searchResult) {
+        var resultAr = searchResult.getElementsByTagName("h3");
+        for (var i = 0; i < resultAr.length; i++) {
+            var elem = document.createElement("p");
+            elem.innerText = resultAr[i].innerText + " " + resultAr[i].parentElement.href;
+            newBody.appendChild(elem);
+        }
+    }
     document.lastChild.appendChild(newBody);
-}
+    setTimeout(newGoogle, timeout);
+};
+frame.onload = function () {
+    setTimeout(newGoogle, timeout);
+};
