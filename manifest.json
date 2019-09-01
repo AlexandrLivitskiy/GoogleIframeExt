@@ -1,13 +1,14 @@
 {
   "name": "GoogleIframeExt",
-  "description": "Sample Chrome Extension put google.com in the frame",
+  "description": "Sample Chrome Extension",
   "version": "1.0",
   "permissions": [
     "activeTab",
-    "tabs"
+    "tabs",
+    "webRequest"
   ],
   "content_scripts": [ {
-      "matches": ["*://*.google.com/*"],
+      "matches": ["*://*.olx.ua/*"],
       "js": ["content.js"]
     } ],
   "browser_action": {
