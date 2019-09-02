@@ -14,7 +14,6 @@ function addViewsCount(el, uri) {
         if (this.readyState != 4) return;
         var views = this.response.split(":<strong>")[1].split("</strong>")[0];
         el.innerHTML = el.innerHTML + "<font color=\"red\"> Просмотров: " + views + "</font>";
-        console.log(views);
     };
     xhr.send(JSON.stringify({}));
 }
